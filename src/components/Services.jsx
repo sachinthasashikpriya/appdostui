@@ -66,10 +66,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section
-      id="services"
-      className="py-20 bg-gradient-to-b from-white to-gray-50"
-    >
+    <section id="services" className="py-20 bg-gray-50">
       <div className="container">
         {/* Header */}
         <motion.div
@@ -78,13 +75,13 @@ export default function Services() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Our Services{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+          <h2 className="text-4xl font-extrabold leading-tight mb-4 text-gray-800">
+            Our{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
               Services
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
             End-to-end IT solutions — custom software, UI/UX, cloud
             infrastructure and more. We deliver comprehensive technology
             services to transform your business.
@@ -100,7 +97,7 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:transform hover:scale-105 group"
+              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:transform hover:scale-105 group border border-gray-200"
             >
               {/* Icon */}
               <div
@@ -115,7 +112,7 @@ export default function Services() {
               </h3>
 
               {/* Description */}
-              <p className="text-gray-600 mb-6 leading-relaxed">
+              <p className="text-gray-700 mb-6 leading-relaxed">
                 {service.description}
               </p>
 
@@ -151,12 +148,12 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.8 }}
-          className="mt-16 text-center bg-gradient-to-r from-blue-50 to-purple-50 p-8 rounded-3xl border border-blue-200"
+          className="mt-16 text-center bg-white p-8 rounded-2xl border border-gray-200 shadow-lg"
         >
           <h3 className="text-2xl font-bold mb-4 text-gray-800">
             🚀 Ready to Transform Your Business?
           </h3>
-          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+          <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
             Let's discuss your project requirements and create a custom solution
             that drives results. Get a free consultation and detailed project
             proposal.
@@ -170,7 +167,7 @@ export default function Services() {
             </a>
             <a
               href="#portfolio"
-              className="inline-flex items-center justify-center px-8 py-3 border-2 border-blue-300 text-blue-600 font-bold rounded-xl hover:bg-blue-50 transform hover:scale-105 transition-all duration-300"
+              className="inline-flex items-center justify-center px-8 py-3 border-2 border-gray-300 text-gray-700 font-bold rounded-xl hover:bg-gray-50 transform hover:scale-105 transition-all duration-300"
             >
               View Our Work
             </a>

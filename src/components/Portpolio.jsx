@@ -2,14 +2,14 @@ import React from "react";
 
 const Portpolio = () => {
   return (
-    <section id="portfolio" className="py-16 bg-gray-50">
+    <section id="portfolio" className="py-20 bg-white">
       <div className="container mx-auto px-6">
         {/* Our Development Process Section */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-extrabold leading-tight mb-4 text-gray-800">
             Our Development Process
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
             We follow a systematic approach to deliver exceptional digital
             solutions
           </p>
@@ -18,16 +18,16 @@ const Portpolio = () => {
         {/* Process Cards */}
         <div className="space-y-8 mb-20">
           <div className="flex justify-center">
-            <div className="bg-white rounded-lg shadow-lg p-8 max-w-2xl w-full border-l-4 border-blue-500">
+            <div className="bg-white rounded-2xl shadow-lg p-8 max-w-2xl w-full border border-gray-200 hover:shadow-2xl transition-all duration-300">
               <div className="flex items-center mb-4">
-                <div className="bg-blue-500 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mr-4">
+                <div className="bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mr-4">
                   1
                 </div>
-                <h3 className="text-2xl font-semibold text-gray-800">
+                <h3 className="text-2xl font-bold text-gray-800">
                   Discovery & Planning
                 </h3>
               </div>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed">
                 We deep dive into your requirements, understand your business
                 goals, analyze competitors, and create a comprehensive project
                 roadmap with clear milestones.
@@ -36,16 +36,16 @@ const Portpolio = () => {
           </div>
 
           <div className="flex justify-center">
-            <div className="bg-white rounded-lg shadow-lg p-8 max-w-2xl w-full border-l-4 border-green-500">
+            <div className="bg-white rounded-2xl shadow-lg p-8 max-w-2xl w-full border border-gray-200 hover:shadow-2xl transition-all duration-300">
               <div className="flex items-center mb-4">
-                <div className="bg-green-500 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mr-4">
+                <div className="bg-gradient-to-br from-green-500 to-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mr-4">
                   2
                 </div>
-                <h3 className="text-2xl font-semibold text-gray-800">
+                <h3 className="text-2xl font-bold text-gray-800">
                   Design & Prototype
                 </h3>
               </div>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed">
                 Our design team creates intuitive wireframes, stunning UI
                 mockups, and interactive prototypes that bring your vision to
                 life before development begins.
@@ -54,16 +54,16 @@ const Portpolio = () => {
           </div>
 
           <div className="flex justify-center">
-            <div className="bg-white rounded-lg shadow-lg p-8 max-w-2xl w-full border-l-4 border-purple-500">
+            <div className="bg-white rounded-2xl shadow-lg p-8 max-w-2xl w-full border border-gray-200 hover:shadow-2xl transition-all duration-300">
               <div className="flex items-center mb-4">
-                <div className="bg-purple-500 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mr-4">
+                <div className="bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mr-4">
                   3
                 </div>
-                <h3 className="text-2xl font-semibold text-gray-800">
+                <h3 className="text-2xl font-bold text-gray-800">
                   Development & Testing
                 </h3>
               </div>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed">
                 Expert developers write clean, scalable code while our QA team
                 performs rigorous testing to ensure flawless functionality
                 across all devices and platforms.
@@ -72,16 +72,16 @@ const Portpolio = () => {
           </div>
 
           <div className="flex justify-center">
-            <div className="bg-white rounded-lg shadow-lg p-8 max-w-2xl w-full border-l-4 border-orange-500">
+            <div className="bg-white rounded-2xl shadow-lg p-8 max-w-2xl w-full border border-gray-200 hover:shadow-2xl transition-all duration-300">
               <div className="flex items-center mb-4">
-                <div className="bg-orange-500 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mr-4">
+                <div className="bg-gradient-to-br from-orange-500 to-orange-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mr-4">
                   4
                 </div>
-                <h3 className="text-2xl font-semibold text-gray-800">
+                <h3 className="text-2xl font-bold text-gray-800">
                   Deployment & Support
                 </h3>
               </div>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed">
                 We handle the complete deployment process and provide ongoing
                 maintenance, updates, and 24/7 technical support to keep your
                 solution running smoothly.
@@ -91,17 +91,17 @@ const Portpolio = () => {
         </div>
 
         {/* Featured Projects Section */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-extrabold leading-tight mb-4 text-gray-800">
             Our Featured Projects
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
             Discover our latest innovations and successful digital solutions
           </p>
         </div>
 
         {/* Project Cards */}
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
           {/* Project 1 - BEU Mate */}
           <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
             <div className="h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
@@ -226,17 +226,17 @@ const Portpolio = () => {
 
         {/* View All Projects Button */}
         <div className="text-center mb-20">
-          <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
+          <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
             View All Projects
           </button>
         </div>
 
         {/* Opensource & Innovation Projects Section */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-extrabold leading-tight mb-4 text-gray-800">
             Opensource & Innovation Projects
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
             Explore our open-source contributions and innovative research
             projects
           </p>
@@ -367,17 +367,17 @@ const Portpolio = () => {
             Let's transform your ideas into innovative digital solutions that
             drive results
           </p>
-          <button className="bg-white text-gray-800 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg">
+          <button className="bg-white text-gray-800 px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg">
             Start Your Project
           </button>
         </div>
 
         {/* Technologies We Master Section */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-extrabold leading-tight mb-4 text-gray-800">
             Technologies We Master
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
             We leverage cutting-edge technologies to build robust, scalable, and
             innovative solutions
           </p>
@@ -386,49 +386,49 @@ const Portpolio = () => {
         {/* Technology Icons Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 max-w-6xl mx-auto">
           {/* React */}
-          <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center group">
+          <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-center group border border-gray-200">
             <div className="text-5xl mb-3 group-hover:animate-pulse">⚛️</div>
             <h4 className="text-lg font-semibold text-gray-800">React</h4>
           </div>
 
           {/* Node.js */}
-          <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center group">
+          <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-center group border border-gray-200">
             <div className="text-5xl mb-3 group-hover:animate-pulse">🟢</div>
             <h4 className="text-lg font-semibold text-gray-800">Node.js</h4>
           </div>
 
           {/* Python */}
-          <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center group">
+          <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-center group border border-gray-200">
             <div className="text-5xl mb-3 group-hover:animate-pulse">🐍</div>
             <h4 className="text-lg font-semibold text-gray-800">Python</h4>
           </div>
 
           {/* MongoDB */}
-          <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center group">
+          <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-center group border border-gray-200">
             <div className="text-5xl mb-3 group-hover:animate-pulse">🍃</div>
             <h4 className="text-lg font-semibold text-gray-800">MongoDB</h4>
           </div>
 
           {/* AWS */}
-          <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center group">
+          <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-center group border border-gray-200">
             <div className="text-5xl mb-3 group-hover:animate-pulse">☁️</div>
             <h4 className="text-lg font-semibold text-gray-800">AWS</h4>
           </div>
 
           {/* Docker */}
-          <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center group">
+          <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-center group border border-gray-200">
             <div className="text-5xl mb-3 group-hover:animate-pulse">🐳</div>
             <h4 className="text-lg font-semibold text-gray-800">Docker</h4>
           </div>
 
           {/* Kotlin */}
-          <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center group">
+          <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-center group border border-gray-200">
             <div className="text-5xl mb-3 group-hover:animate-pulse">📱</div>
             <h4 className="text-lg font-semibold text-gray-800">Kotlin</h4>
           </div>
 
           {/* TypeScript */}
-          <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center group">
+          <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-center group border border-gray-200">
             <div className="text-5xl mb-3 group-hover:animate-pulse">💙</div>
             <h4 className="text-lg font-semibold text-gray-800">TypeScript</h4>
           </div>
