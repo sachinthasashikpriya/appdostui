@@ -127,21 +127,6 @@ export default function About() {
                   className="w-full h-80 object-cover rounded-xl transform transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
-
-              {/* Floating Achievement Cards */}
-              <div className="absolute -top-4 -left-4 bg-white p-4 rounded-xl shadow-lg border border-gray-200 relative z-10">
-                <div className="text-2xl mb-1">🏆</div>
-                <div className="text-sm font-bold text-gray-800">
-                  Award Winner
-                </div>
-              </div>
-
-              <div className="absolute -bottom-4 -right-4 bg-white p-4 rounded-xl shadow-lg border border-gray-200 relative z-10">
-                <div className="text-2xl mb-1">🚀</div>
-                <div className="text-sm font-bold text-gray-800">
-                  Fast Growth
-                </div>
-              </div>
             </div>
           </motion.div>
         </div>
