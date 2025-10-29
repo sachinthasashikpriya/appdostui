@@ -1,15 +1,56 @@
+import { motion } from "framer-motion";
 import React from "react";
 
 const Blog = () => {
+  // Animation variants for staggered card animations
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: {
+      opacity: 0,
+      y: 60,
+      scale: 0.9,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.7,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
     <section id="blog" className="py-20 bg-gray-50">
       <div className="container mx-auto px-6">
         {/* Insights & Tech Articles Section */}
-        <div className="text-center mb-16">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
           {/* Latest Updates Button */}
-          <button className="bg-white text-blue-600 px-6 py-2 rounded-full text-sm font-medium mb-6 hover:bg-gray-50 transition-colors duration-300 border border-gray-200 shadow-sm">
+          <motion.button
+            className="bg-white text-blue-600 px-6 py-2 rounded-full text-sm font-medium mb-6 hover:bg-gray-50 transition-colors duration-300 border border-gray-200 shadow-sm"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
             Latest Updates
-          </button>
+          </motion.button>
 
           <h2 className="text-4xl font-extrabold leading-tight mb-4 text-gray-800">
             Insights & Tech Articles
@@ -18,12 +59,21 @@ const Blog = () => {
             Stay informed with our latest insights, tech trends, and industry
             expertise
           </p>
-        </div>
+        </motion.div>
 
         {/* Article Cards */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
+        <motion.div
+          className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
           {/* Article Card 1 */}
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group border border-gray-200">
+          <motion.div
+            variants={cardVariants}
+            className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group border border-gray-200"
+          >
             {/* Image Section with Hover Button */}
             <div className="relative h-48 bg-gradient-to-br from-purple-500 to-indigo-600 overflow-hidden">
               <div className="w-full h-full bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center">
@@ -73,10 +123,13 @@ const Blog = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Article Card 2 */}
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group border border-gray-200">
+          <motion.div
+            variants={cardVariants}
+            className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group border border-gray-200"
+          >
             {/* Image Section with Hover Button */}
             <div className="relative h-48 bg-gradient-to-br from-blue-500 to-teal-600 overflow-hidden">
               <div className="w-full h-full bg-gradient-to-br from-blue-500 to-teal-600 flex items-center justify-center">
@@ -120,10 +173,13 @@ const Blog = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Article Card 3 */}
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group border border-gray-200">
+          <motion.div
+            variants={cardVariants}
+            className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group border border-gray-200"
+          >
             {/* Image Section with Hover Button */}
             <div className="relative h-48 bg-gradient-to-br from-green-500 to-emerald-600 overflow-hidden">
               <div className="w-full h-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
@@ -167,15 +223,21 @@ const Blog = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* View All Articles Button */}
-        <div className="text-center">
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+        >
           <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
             View All Articles
           </button>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

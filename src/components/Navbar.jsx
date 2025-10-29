@@ -15,26 +15,82 @@ export default function Navbar() {
       "contact",
     ];
 
+    // Improved intersection observer with better detection
     const observerOptions = {
       root: null,
-      rootMargin: "-20% 0px -60% 0px",
-      threshold: [0.1, 0.25],
+      rootMargin: "-10% 0px -50% 0px", // More balanced margins
+      threshold: [0.1, 0.3, 0.5], // Multiple thresholds for better detection
     };
 
     const observerCallback = (entries) => {
-      const visibleEntries = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+      // Find all intersecting entries
+      const intersectingEntries = entries.filter(
+        (entry) => entry.isIntersecting
+      );
 
-      if (visibleEntries.length > 0) {
-        const mostVisible = visibleEntries[0];
-        const sectionId = mostVisible.target.id;
+      if (intersectingEntries.length > 0) {
+        // Sort by intersection ratio and position in viewport
+        const sortedEntries = intersectingEntries.sort((a, b) => {
+          // First sort by intersection ratio (higher is better)
+          const ratioComparison = b.intersectionRatio - a.intersectionRatio;
+          if (Math.abs(ratioComparison) > 0.1) {
+            return ratioComparison;
+          }
+
+          // If ratios are similar, prefer the one closer to viewport center
+          const aRect = a.boundingClientRect;
+          const bRect = b.boundingClientRect;
+          const viewportCenter = window.innerHeight / 2;
+
+          const aDistance = Math.abs(
+            aRect.top + aRect.height / 2 - viewportCenter
+          );
+          const bDistance = Math.abs(
+            bRect.top + bRect.height / 2 - viewportCenter
+          );
+
+          return aDistance - bDistance;
+        });
+
+        const bestEntry = sortedEntries[0];
+        const sectionId = bestEntry.target.id;
+
         if (sectionId && sections.includes(sectionId)) {
+          console.log(
+            `Section detected: ${sectionId}, ratio: ${bestEntry.intersectionRatio.toFixed(
+              2
+            )}`
+          );
           setActiveSection(sectionId);
         }
       }
     };
 
+    // Fallback scroll-based detection
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const element = document.getElementById(sections[i]);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          const elementTop = window.scrollY + rect.top;
+
+          if (scrollPosition >= elementTop - 100) {
+            const newActiveSection = sections[i];
+            if (newActiveSection !== activeSection) {
+              console.log(
+                `Scroll fallback: Setting active section to ${newActiveSection}`
+              );
+              setActiveSection(newActiveSection);
+            }
+            break;
+          }
+        }
+      }
+    };
+
+    // Create and setup observer
     const observer = new IntersectionObserver(
       observerCallback,
       observerOptions
@@ -59,25 +115,40 @@ export default function Navbar() {
       );
     };
 
-    const timeoutId = setTimeout(observeSections, 500);
+    // Setup observers and scroll listener
+    const timeoutId = setTimeout(() => {
+      observeSections();
+      // Add scroll listener as fallback
+      window.addEventListener("scroll", handleScroll, { passive: true });
+    }, 500);
 
     return () => {
       clearTimeout(timeoutId);
       observer.disconnect();
+      window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [activeSection]); // Add activeSection as dependency
 
   const handleNavClick = (sectionId) => {
-    setActiveSection(sectionId);
-    setIsMobileMenuOpen(false);
     console.log("Navigation clicked:", sectionId);
 
+    // Immediately set active section for instant feedback
+    setActiveSection(sectionId);
+    setIsMobileMenuOpen(false);
+
+    // Scroll to section with offset for sticky header
     setTimeout(() => {
       const element = document.getElementById(sectionId);
       if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+        const headerHeight = 80; // Account for sticky header
+        const elementPosition = element.offsetTop - headerHeight;
+
+        window.scrollTo({
+          top: elementPosition,
+          behavior: "smooth",
+        });
       }
-    }, 50);
+    }, 100);
   };
 
   const toggleMobileMenu = (e) => {

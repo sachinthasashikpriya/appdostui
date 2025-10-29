@@ -67,14 +67,24 @@ export default function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.25 }}
-            className="bg-white rounded-2xl p-6 shadow-2xl animate-float"
+            className="bg-white rounded-2xl p-6 shadow-2xl animate-float relative overflow-hidden group hover:shadow-3xl transition-all duration-500"
           >
-            <img
-              src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder"
-              alt="app preview"
-              className="rounded-lg w-full object-cover"
-            />
-            <div className="mt-4">
+            {/* Blue border animation */}
+            <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div className="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 bg-clip-border animate-spin-slow"></div>
+              <div className="absolute inset-[2px] rounded-2xl bg-white"></div>
+            </div>
+
+            {/* Image with zoom effect */}
+            <div className="relative z-10 overflow-hidden rounded-lg">
+              <img
+                src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder"
+                alt="app preview"
+                className="rounded-lg w-full object-cover transform transition-transform duration-700 group-hover:scale-110"
+              />
+            </div>
+
+            <div className="mt-4 relative z-10">
               <div className="font-semibold">Featured Project — BEU Mate</div>
               <div className="text-sm text-gray-500">
                 AI-powered educational app

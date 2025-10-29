@@ -16,3 +16,43 @@ body {
 .container {
   @apply mx-auto px-4 sm:px-6 lg:px-8;
 }
+
+/* Blue border animation */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
+
+/* Card hover effects */
+.card-hover-border {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-hover-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6, #3b82f6);
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: exclude;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
+.card-hover-border:hover::before {
+  opacity: 1;
+  animation: spin-slow 3s linear infinite;
+}

@@ -36,6 +36,35 @@ export default function About() {
     },
   ];
 
+  // Animation variants for staggered card animations
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: {
+      opacity: 0,
+      y: 50,
+      scale: 0.8,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
     <section id="about" className="py-20 bg-white">
       <div className="container">
@@ -83,22 +112,31 @@ export default function About() {
             transition={{ delay: 0.4 }}
             className="relative"
           >
-            <div className="relative bg-white rounded-2xl p-6 shadow-2xl">
-              <img
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop"
-                alt="Team collaboration"
-                className="w-full h-80 object-cover rounded-xl"
-              />
+            <div className="relative bg-white rounded-2xl p-6 shadow-2xl group hover:shadow-3xl transition-all duration-500 overflow-hidden">
+              {/* Blue border animation */}
+              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 bg-clip-border animate-spin-slow"></div>
+                <div className="absolute inset-[2px] rounded-2xl bg-white"></div>
+              </div>
+
+              {/* Image with zoom effect */}
+              <div className="relative z-10 overflow-hidden rounded-xl">
+                <img
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop"
+                  alt="Team collaboration"
+                  className="w-full h-80 object-cover rounded-xl transform transition-transform duration-700 group-hover:scale-110"
+                />
+              </div>
 
               {/* Floating Achievement Cards */}
-              <div className="absolute -top-4 -left-4 bg-white p-4 rounded-xl shadow-lg border border-gray-200">
+              <div className="absolute -top-4 -left-4 bg-white p-4 rounded-xl shadow-lg border border-gray-200 relative z-10">
                 <div className="text-2xl mb-1">🏆</div>
                 <div className="text-sm font-bold text-gray-800">
                   Award Winner
                 </div>
               </div>
 
-              <div className="absolute -bottom-4 -right-4 bg-white p-4 rounded-xl shadow-lg border border-gray-200">
+              <div className="absolute -bottom-4 -right-4 bg-white p-4 rounded-xl shadow-lg border border-gray-200 relative z-10">
                 <div className="text-2xl mb-1">🚀</div>
                 <div className="text-sm font-bold text-gray-800">
                   Fast Growth
@@ -124,13 +162,16 @@ export default function About() {
             industries.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
             {/* UI/UX Design Excellence */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
+              variants={cardVariants}
               className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:transform hover:scale-105 group border border-gray-200"
             >
               <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
@@ -148,10 +189,7 @@ export default function About() {
 
             {/* Custom Software Development */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
+              variants={cardVariants}
               className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:transform hover:scale-105 group border border-gray-200"
             >
               <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
@@ -169,10 +207,7 @@ export default function About() {
 
             {/* Web Application Development */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
+              variants={cardVariants}
               className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:transform hover:scale-105 group border border-gray-200"
             >
               <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
@@ -190,10 +225,7 @@ export default function About() {
 
             {/* Mobile App Development */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
+              variants={cardVariants}
               className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:transform hover:scale-105 group border border-gray-200"
             >
               <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
@@ -211,10 +243,7 @@ export default function About() {
 
             {/* Full-Stack Development */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
+              variants={cardVariants}
               className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:transform hover:scale-105 group border border-gray-200"
             >
               <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
@@ -232,10 +261,7 @@ export default function About() {
 
             {/* Digital Transformation Consulting */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.6 }}
+              variants={cardVariants}
               className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:transform hover:scale-105 group border border-gray-200"
             >
               <div className="w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
@@ -250,7 +276,7 @@ export default function About() {
                 economy.
               </p>
             </motion.div>
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* Why Choose AppDost Section */}
@@ -269,13 +295,16 @@ export default function About() {
             choice for businesses worldwide.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
             {/* Proven Track Record */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
+              variants={cardVariants}
               className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-2xl border border-blue-200 hover:shadow-xl transition-all duration-300 group"
             >
               <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
@@ -292,10 +321,7 @@ export default function About() {
 
             {/* 24/7 Dedicated Support */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
+              variants={cardVariants}
               className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-2xl border border-green-200 hover:shadow-xl transition-all duration-300 group"
             >
               <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
@@ -312,10 +338,7 @@ export default function About() {
 
             {/* Cutting-Edge Technology */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
+              variants={cardVariants}
               className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-2xl border border-purple-200 hover:shadow-xl transition-all duration-300 group"
             >
               <div className="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
@@ -332,10 +355,7 @@ export default function About() {
 
             {/* Agile Development Process */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
+              variants={cardVariants}
               className="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-2xl border border-orange-200 hover:shadow-xl transition-all duration-300 group"
             >
               <div className="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
@@ -352,10 +372,7 @@ export default function About() {
 
             {/* Cost-Effective Solutions */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
+              variants={cardVariants}
               className="bg-gradient-to-br from-pink-50 to-pink-100 p-6 rounded-2xl border border-pink-200 hover:shadow-xl transition-all duration-300 group"
             >
               <div className="w-12 h-12 bg-pink-500 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
@@ -372,10 +389,7 @@ export default function About() {
 
             {/* Expert Team */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.6 }}
+              variants={cardVariants}
               className="bg-gradient-to-br from-indigo-50 to-indigo-100 p-6 rounded-2xl border border-indigo-200 hover:shadow-xl transition-all duration-300 group"
             >
               <div className="w-12 h-12 bg-indigo-500 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
@@ -389,7 +403,7 @@ export default function About() {
                 experience
               </p>
             </motion.div>
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* Work Culture and Values Section */}
@@ -411,13 +425,16 @@ export default function About() {
             At AppDost, we believe in:
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
             {/* Innovation First */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
+              variants={cardVariants}
               className="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-3xl border border-blue-200 hover:shadow-2xl transition-all duration-300 hover:transform hover:scale-105 group"
             >
               <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
@@ -434,10 +451,7 @@ export default function About() {
 
             {/* Collaborative Environment */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
+              variants={cardVariants}
               className="bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-3xl border border-green-200 hover:shadow-2xl transition-all duration-300 hover:transform hover:scale-105 group"
             >
               <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
@@ -454,10 +468,7 @@ export default function About() {
 
             {/* Continuous Learning */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
+              variants={cardVariants}
               className="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-3xl border border-purple-200 hover:shadow-2xl transition-all duration-300 hover:transform hover:scale-105 group"
             >
               <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
@@ -474,10 +485,7 @@ export default function About() {
 
             {/* Growth Mindset */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
+              variants={cardVariants}
               className="bg-gradient-to-br from-orange-50 to-yellow-50 p-8 rounded-3xl border border-orange-200 hover:shadow-2xl transition-all duration-300 hover:transform hover:scale-105 group"
             >
               <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
@@ -494,10 +502,7 @@ export default function About() {
 
             {/* Work-Life Balance */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
+              variants={cardVariants}
               className="bg-gradient-to-br from-indigo-50 to-blue-50 p-8 rounded-3xl border border-indigo-200 hover:shadow-2xl transition-all duration-300 hover:transform hover:scale-105 group"
             >
               <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-blue-500 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
@@ -515,10 +520,7 @@ export default function About() {
 
             {/* Recognition & Rewards */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.6 }}
+              variants={cardVariants}
               className="bg-gradient-to-br from-rose-50 to-pink-50 p-8 rounded-3xl border border-rose-200 hover:shadow-2xl transition-all duration-300 hover:transform hover:scale-105 group"
             >
               <div className="w-16 h-16 bg-gradient-to-br from-rose-500 to-pink-500 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
@@ -533,7 +535,7 @@ export default function About() {
                 team.
               </p>
             </motion.div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
